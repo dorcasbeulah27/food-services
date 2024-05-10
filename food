@@ -1,0 +1,40 @@
+food_list = ["egg rice", "fried rice", "biriyani", "meals", "chapatti"]
+order_list = []
+total_price = 0
+print(
+    "hello!!! you can order your food from the below  food list (provide the food number"
+)
+for i, food in enumerate(food_list):
+    print(str(i) + "." + food)
+    #print(food_list.index(food),food)
+continue_ordering = True
+while continue_ordering:
+    user_ans = input("do you want to order{yes/no)?")
+    if (user_ans == "yes"):
+        valid_num = False
+        while not valid_num:
+            food_order = int(
+                input("what food you want to order? provide the number(eg:1)"))
+            #validate user input
+            if (food_order >= 0 and food_order <= len(food_list) - 1):
+                order_list.append(food_list[food_order])
+                print("adding" + " " + food_list[food_order])
+                total_price += 10
+                valid_num = True
+            else:
+                print("provide a valid number")
+    else:
+        continue_ordering = False
+print("you have ordered:" + str(order_list))
+print("you have to pay" + " " + str(total_price) + "euros")
+
+valid_tip = False
+while not valid_tip:
+    tip = float(input("what tip you want to leave?(0-25%)"))
+    if (tip >= 0 and tip <= 25):
+        valid_tip = True
+    else:
+        print("provide a valid tip")
+total_price = total_price + (total_price * (tip / 100))
+print("thank you !! you have to pay" + " " + str(total_price) + "" +
+      "euros.Your food is on the way!!")
